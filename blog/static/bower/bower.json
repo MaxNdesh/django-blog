@@ -1,0 +1,17 @@
+{
+  "name": "bower",
+  "homepage": "https://github.com/MaxNdesh/django-blog",
+  "authors": [
+    "Maxwell Nderitu <nderitumaxwell@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
