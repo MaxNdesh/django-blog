@@ -5,6 +5,11 @@
         {% if post.published_date %}
             <div class="date pull-right">
                 {{ post.published_date }}
+                    {% if user.is_authenicated %}
+                        <a href="{% url 'post_edit' pk=post.pk %}">
+                            <span class="btn btn-default glyphicon glyphicon-pencil"></span>
+                        </a>
+                    {% endif %}
             </div>
         {% endif %}
         <h1>{{ post.title }}</h1>
