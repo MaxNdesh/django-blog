@@ -18,11 +18,14 @@
 <body>
 
 <div class="page-header">
-    {% if user.is_authenicated %}
+{#    {% if user.is_authenicated %}#}
+        <a href="{% url 'post_draft_list' %}" class="top-menu">
+            <span class="glyphicon glyphicon-baby-formula"></span>
+        </a>
         <a href="{% url 'post_new' %}" class="top-menu">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
-    {% endif %}
+{#    {% endif %}#}
     <h1><a href="/">Max's Blog</a></h1>
 </div>
 
