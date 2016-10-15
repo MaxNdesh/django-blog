@@ -15,4 +15,7 @@ urlpatterns = [
     url(r'^login/$', django.contrib.auth.views.login, name='login'),
     # url(r'^accounts/logout/$', django.contrib.auth.views.logout, name='logout', kwargs={'next_page': '/'}),
     url(r'^logout/$', django.contrib.auth.views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^post/(?P<pk>\d+)/comment$', views.add_comment_to_post, name='add_comment_to_post'),
+    url(r'^comment/(?P<pk>\d+)/approve$', views.comment_approve, name='comment_approve'),
+    url(r'^comment/(?P<pk>\d+)/remove$', views.comment_remove, name='comment_remove'),
 ]
