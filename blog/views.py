@@ -13,13 +13,13 @@ def post_list(request):
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 
-@login_required
+@login_required(login_url='login')
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_details.html', {'post': post})
 
 
-@login_required
+@login_required(login_url='login')
 def post_new(request):
     # Check if the form is submitted
     if request.method == 'POST':
@@ -40,7 +40,7 @@ def post_new(request):
     return render(request, 'blog/post_new.html', {'form': form})
 
 
-@login_required
+@login_required(login_url='login')
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
@@ -63,27 +63,27 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
-@login_required()
+@login_required(login_url='login')
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
 
-@login_required
+@login_required(login_url='login')
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('post_detail', pk=pk)
 
 
-@login_required
+@login_required(login_url='login')
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post_list')
 
 
-@login_required
+@login_required(login_url='login')
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
@@ -101,14 +101,14 @@ def add_comment_to_post(request, pk):
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
 
-@login_required
+@login_required(login_url='login')
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.approve()
     return redirect('post_detail', pk=comment.post.pk)
 
 
-@login_required
+@login_required(login_url='login')
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     post_pk = comment.post.pk
